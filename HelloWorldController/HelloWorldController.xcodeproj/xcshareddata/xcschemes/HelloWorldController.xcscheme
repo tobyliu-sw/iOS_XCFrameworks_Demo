@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1130"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7FE9B49C23C3ECD20089365A"
+               BuildableName = "HelloWorldController.framework"
+               BlueprintName = "HelloWorldController"
+               ReferencedContainer = "container:HelloWorldController.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7FE9B49C23C3ECD20089365A"
+            BuildableName = "HelloWorldController.framework"
+            BlueprintName = "HelloWorldController"
+            ReferencedContainer = "container:HelloWorldController.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;mv /tmp/xcode_archive_post_actions.log /tmp/xcode_archive_post_actions_prev.log&#10;exec &gt; /tmp/xcode_archive_post_actions.log 2&gt;&amp;1&#10;&#10;# Avoid recursive running this script&#10;if [ &quot;true&quot; == ${ALREADYEXECUTED:-false} ]; then&#10;    echo &quot;This script has already been executed. Stop recursive running.&quot;&#10;    exit 0&#10;else&#10;    export ALREADYEXECUTED=&quot;true&quot;&#10;fi&#10;&#10;# Export TOOLCHAINS env variable to workaround the failure of copying PNG files&#10;export TOOLCHAINS=&quot;${DEVELOPER_BIN_DIR}&quot;&#10;&#10;# Archive framework file for iOS Simulator architecture&#10;export SIMULATOR_ARCHIVE_PATH=&quot;${ARCHIVE_PRODUCTS_PATH}/Simulator&quot;&#10;xcodebuild -workspace &quot;${WORKSPACE_PATH}&quot; -scheme &quot;${SCHEME_NAME}&quot; -configuration &quot;${CONFIGURATION}&quot; -destination &quot;generic/platform=iOS Simulator&quot; -archivePath &quot;${SIMULATOR_ARCHIVE_PATH}&quot; archive&#10;&#10;# Generate XCFramework folder&#10;export XCFRAMEWORK_PATH=&quot;${PROJECT_DIR}&quot;&#10;rm -rf &quot;${XCFRAMEWORK_PATH}/${PRODUCT_MODULE_NAME}.xcframework&quot;&#10;xcodebuild -create-xcframework -framework &quot;${ARCHIVE_PRODUCTS_PATH}${INSTALL_PATH}/${FULL_PRODUCT_NAME}&quot; -framework &quot;${SIMULATOR_ARCHIVE_PATH}.xcarchive/Products${INSTALL_PATH}/${FULL_PRODUCT_NAME}&quot; -output &quot;${XCFRAMEWORK_PATH}/${PRODUCT_MODULE_NAME}.xcframework&quot;&#10;&#10;# Remove module name from the type declaration of delegate variable to workaround the confusion between module name and class name in build process&#10;export REPLACE_FROM=&quot;${PRODUCT_MODULE_NAME}.HelloWorldControllerDelegate&quot;&#10;export REPLACE_TO=&quot;HelloWorldControllerDelegate&quot;&#10;find &quot;${XCFRAMEWORK_PATH}/${PRODUCT_MODULE_NAME}.xcframework&quot; -type f -name &quot;*.swiftinterface&quot; -exec sed -i &apos;&apos; &quot;s/${REPLACE_FROM}/${REPLACE_TO}/g&quot; &quot;{}&quot; \;&#10;&#10;# Open XCFramework path in Finder&#10;open &quot;${XCFRAMEWORK_PATH}&quot;&#10;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "7FE9B49C23C3ECD20089365A"
+                     BuildableName = "HelloWorldController.framework"
+                     BlueprintName = "HelloWorldController"
+                     ReferencedContainer = "container:HelloWorldController.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
+   </ArchiveAction>
+</Scheme>
